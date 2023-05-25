@@ -1,10 +1,10 @@
-import pkg from '../../package.json';
+import * as resolveURL from 'resolve-url';
 
 /*
  * Default options for browser environment
  */
 const corePath = typeof process !== 'undefined' && process.env.NODE_ENV === 'development'
-  ? new URL('/node_modules/@ffmpeg/core/dist/ffmpeg-core.js', import.meta.url).href
+  ? resolveURL('/node_modules/@ffmpeg/core/dist/ffmpeg-core.js')
   : `https://unpkg.com/@ffmpeg/core@${pkg.devDependencies['@ffmpeg/core'].substring(1)}/dist/ffmpeg-core.js`;
 
 export default { corePath };
